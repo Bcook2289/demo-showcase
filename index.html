@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brandon Cook — Project Demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #181818;
+    --border: #2a2a2a;
+    --text-primary: #f0ede8;
+    --text-secondary: #888;
+    --accent: #c8f04e;
+    --accent-dim: rgba(200, 240, 78, 0.08);
+    --radius: 12px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0 24px;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 0 64px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 6vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  .intro {
+    color: var(--text-secondary);
+    font-size: 15px;
+    max-width: 480px;
+    margin-bottom: 64px;
+    line-height: 1.7;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-dim);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .card:hover {
+    border-color: rgba(200, 240, 78, 0.3);
+  }
+
+  .card:hover::before {
+    opacity: 1;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .card-arrow {
+    color: var(--accent);
+    font-size: 18px;
+    margin-top: 2px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .card:hover .card-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .card-desc {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.65;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+  }
+
+  .tag {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-weight: 500;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  .footer {
+    color: var(--text-secondary);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer a:hover {
+    color: var(--text-primary);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .card::before, .card-arrow { transition: none; }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 56px 0 48px; }
+    .card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <p class="eyebrow">Project demos</p>
+  <h1>Built to ship.</h1>
+  <p class="intro">A selection of live projects spanning mobile, web, and full-stack development. Each one is production-deployed and explorable.</p>
+
+  <div class="projects">
+    <a class="card" href="https://calmanchor-44606.web.app/" target="_blank" rel="noopener">
+      <div class="card-header">
+        <span class="card-title">Calm Anchor</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <p class="card-desc">A cross-platform wellness app built on React and Firebase, with a Capacitor-wrapped Android build distributed via Google Play. Features Firebase Authentication, Firestore data persistence, a full CI/CD pipeline via GitHub Actions, and 38 automated unit tests across 9 files.</p>
+      <div class="tags">
+        <span class="tag">React</span>
+        <span class="tag">Firebase</span>
+        <span class="tag">Capacitor</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Vitest</span>
+      </div>
+    </a>
+
+    <a class="card" href="https://frontend-delta-two-86.vercel.app/" target="_blank" rel="noopener">
+      <div class="card-header">
+        <span class="card-title">CMS Platform</span>
+        <span class="card-arrow">↗</span>
+      </div>
+      <p class="card-desc">A content management system built for a live client, with a Next.js frontend, Express API, and Prisma ORM backed by PostgreSQL via Supabase. Deployed across Vercel and Render with a cold-start fallback dataset for reliability.</p>
+      <div class="tags">
+        <span class="tag">Next.js</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">Express</span>
+        <span class="tag">Prisma</span>
+        <span class="tag">Supabase</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="footer">
+    <span>Brandon Cook</span>
+    <a href="https://github.com/Bcook2289" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+</div>
+</body>
+</html>
