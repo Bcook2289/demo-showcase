@@ -75,12 +75,12 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 32px;
-    text-decoration: none;
     color: inherit;
     display: block;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color 0.2s;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
   }
 
   .card::before {
@@ -90,6 +90,7 @@
     background: var(--accent-dim);
     opacity: 0;
     transition: opacity 0.2s;
+    pointer-events: none;
   }
 
   .card:hover {
@@ -105,7 +106,6 @@
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 12px;
-    position: relative;
   }
 
   .card-title {
@@ -114,6 +114,11 @@
     font-weight: 400;
     color: var(--text-primary);
     line-height: 1.2;
+    text-decoration: none;
+  }
+
+  .card-title:hover {
+    color: var(--text-primary);
   }
 
   .card-arrow {
@@ -132,7 +137,6 @@
     color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.65;
-    position: relative;
     margin-bottom: 20px;
   }
 
@@ -140,7 +144,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    position: relative;
+    margin-bottom: 16px;
   }
 
   .tag {
@@ -152,6 +156,27 @@
     border-radius: 4px;
     padding: 3px 8px;
     font-weight: 500;
+  }
+
+  .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-links a {
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+
+  .card-links a:hover {
+    opacity: 1;
   }
 
   .divider {
@@ -195,7 +220,8 @@
   <p class="intro">A selection of live projects spanning mobile, web, and full-stack development. Each one is production-deployed and explorable.</p>
 
   <div class="projects">
-    <a class="card" href="https://calmanchor-44606.web.app/" target="_blank" rel="noopener">
+
+    <div class="card" onclick="window.open('https://calmanchor-44606.web.app/', '_blank')">
       <div class="card-header">
         <span class="card-title">Calm Anchor</span>
         <span class="card-arrow">↗</span>
@@ -208,14 +234,17 @@
         <span class="tag">GitHub Actions</span>
         <span class="tag">Vitest</span>
       </div>
-    </a>
+      <div class="card-links">
+        <a href="https://github.com/Bcook2289/calm-anchor-architecture" target="_blank" onclick="event.stopPropagation()">Architecture docs ↗</a>
+      </div>
+    </div>
 
-    <a class="card" href="https://frontend-delta-two-86.vercel.app/" target="_blank" rel="noopener">
+    <div class="card" onclick="window.open('https://frontend-delta-two-86.vercel.app/', '_blank')">
       <div class="card-header">
         <span class="card-title">CMS Platform</span>
         <span class="card-arrow">↗</span>
       </div>
-      <p class="card-desc">A content management system built for a live client, with a Next.js frontend, Express API, and Prisma ORM backed by PostgreSQL via Supabase. Deployed across Vercel and Render with a cold-start fallback dataset for reliability.</p>
+      <p class="card-desc">A content management system built for a live client, with a Next.js frontend, Express API, and Prisma ORM backed by PostgreSQL via Supabase. Deployed across Vercel and Render with a cold-start fallback dataset for reliability. Admin (https://frontend-delta-two-86.vercel.app/login) features are credential gated, architecture and implementation details in the repo.</p>
       <div class="tags">
         <span class="tag">Next.js</span>
         <span class="tag">TypeScript</span>
@@ -223,14 +252,19 @@
         <span class="tag">Prisma</span>
         <span class="tag">Supabase</span>
       </div>
-    </a>
+      <div class="card-links">
+        <a href="https://github.com/sentient-band-site/frontend" target="_blank" onclick="event.stopPropagation()">Frontend repo ↗</a>
+        <a href="https://github.com/sentient-band-site/backend" target="_blank" onclick="event.stopPropagation()">Backend repo ↗</a>
+      </div>
+    </div>
+
   </div>
 
   <div class="divider"></div>
 
   <div class="footer">
     <span>Brandon Cook</span>
-    <a href="https://github.com/Bcook2289" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="https://github.com/Bcook2289" target="_blank">GitHub ↗</a>
   </div>
 </div>
 </body>
